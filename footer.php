@@ -1,7 +1,7 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: mike
- * Date: 22-5-15
- * Time: 13:13
- */
+<footer>
+    <div class="row">
+        <div style="background-color: #ccc;" class="col-lg-12">
+            <p>Copyright &copy; Webshop RTM</p>
+        </div>
+    </div>
+</footer>
