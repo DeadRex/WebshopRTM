@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Shop Homepage - Start Bootstrap Template</title>
+    <title>Core-Dump</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -75,12 +75,9 @@
                             <li><a class="text-center" href="">View Cart</a></li>
                         </ul>
             </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container -->
     </nav>
 
-    <!-- Page Content -->
     <div class="container">
 
         <div class="row">
@@ -88,9 +85,9 @@
             <div class="col-md-3">
                 <p class="lead">CoreDump</p>
                 <div class="list-group">
-                    <a href="#" class="list-group-item">Mobiele Telefoons</a>
-                    <a href="#" class="list-group-item">Computer</a>
-                    <a href="#" class="list-group-item">Consoles</a>
+                    <a href="telefoons&tablets.php" class="list-group-item">Mobiele Telefoons & Tablets</a>
+                    <a href="computers&componenten.php" class="list-group-item">Computers & Componenten</a>
+                    <a href="consoles&controlers.php" class="list-group-item">Consoles & Controllers</a>
                 </div>
             </div>
 
@@ -137,66 +134,84 @@
                                 <h4><a href="#">HTC Desire 500</a>
                                 </h4>
                                 <p>HTC Desire 500.</p>
+                                <span class="item-right"><br>
+                                    <button class="btn btn-sm btn-info pull-right">Voeg toe aan winkelmandje</button>
+                                </span>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
+                            <img src="img/htc-desire-500.jpg" alt="">
                             <div class="caption">
                                 <h4 class="pull-right">$64.99</h4>
                                 <h4><a href="#">Second Product</a>
                                 </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <p>Product nummer 1</p>
+                                <span class="item-right"><br>
+                                    <button class="btn btn-sm btn-info pull-right">Voeg toe aan winkelmandje</button>
+                                </span>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
+                            <img src="img/htc-desire-500.jpg" alt="">
                             <div class="caption">
                                 <h4 class="pull-right">$74.99</h4>
                                 <h4><a href="#">Third Product</a>
                                 </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <p>Product nummer 2</p>
+                                <span class="item-right"><br>
+                                    <button class="btn btn-sm btn-info pull-right">Voeg toe aan winkelmandje</button>
+                                </span>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
+                            <img src="img/htc-desire-500.jpg" alt="">
                             <div class="caption">
                                 <h4 class="pull-right">$84.99</h4>
                                 <h4><a href="#">Fourth Product</a>
                                 </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <p>Product nummer 3</p>
+                                <span class="item-right"><br>
+                                    <button class="btn btn-sm btn-info pull-right">Voeg toe aan winkelmandje</button>
+                                </span>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
+                            <img src="img/htc-desire-500.jpg" alt="">
                             <div class="caption">
                                 <h4 class="pull-right">$94.99</h4>
                                 <h4><a href="#">Fifth Product</a>
                                 </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <p>Product nummer 4</p>
+                                <span class="item-right"><br>
+                                    <button class="btn btn-sm btn-info pull-right">Voeg toe aan winkelmandje</button>
+                                </span>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
+                            <img src="img/htc-desire-500.jpg" alt="">
                             <div class="caption">
                                 <h4 class="pull-right">$94.99</h4>
                                 <h4><a href="#">Fifth Product</a>
                                 </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <p>Product nummer 5</p>
+                                <span class="item-right"><br>
+                                    <button class="btn btn-sm btn-info pull-right">Voeg toe aan winkelmandje</button>
+                                </span>
                             </div>
                         </div>
                     </div>
