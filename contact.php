@@ -117,7 +117,7 @@
                     </div>
                     <div class="col-xs-12 col-md-12 col-md-12">
                         <div class="form-group">
-                            <label for="comment">Extra informatie</label>
+                            <label for="comment">klachten</label>
                             <textarea class="form-control" rows="5" id="comment"></textarea>
                         </div>
                     </div>
@@ -127,7 +127,7 @@
                     </div>
 
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-default">Verstuur reservering</button><br><br>
+                        <button type="submit" class="btn btn-default">Verstuur</button><br><br>
                     </div>
 
                 </form>
@@ -136,25 +136,25 @@
                 <div class="col-xs-12 col-sm-6 col-md-12">
                     <h1>Adress gegevens</h1>
                     <div class="col-xs-12 col-sm-12 col-md-6">
-                        Hoofdstraat 217<br>
-                        9828 PB Oostwold<br>
-                        T: 050 - 5515 282<br>
-                        M: <a href="mailto:reserveren@caferestauranthetwittepaard.nl">reserveren@caferestauranthetwittepaard.nl</a><br><br>
+                        Boumaboulevard 573<br>
+                        9723 ZS Groningen<br>
+                        T: 06-6969696969<br>
+                        M: <a href="core-dump@gmail.com">core-dump@gmail.com</a><br><br>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-12">
                     <h1>Openingstijden</h1>
 
                     <div class="col-xs-12 col-sm-12 col-md-6">
-                        Maandag: Gesloten<br>
-                        Dinsdag: Gesloten<br>
-                        Woensdag: 12:00 uur<br>
-                        Donderdag: 12:00 uur<br>
+                        Maandag: 8:00 uur tot 18:00 uur  <br>
+                        Dinsdag: 8:00 uur tot 18:00 uur  <br>
+                        Woensdag: 8:00 uur tot 18:00 uur <br>
+                        Donderdag: 8:00 uur tot 18:00 uur<br>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-6">
-                        Vrijdag: 12:00 uur<br>
-                        Zaterdag: 12:00 uur<br>
-                        Zondag: 15:00 uur<br>
+                        Vrijdag: 0:00 tot 0:00 uur<br>
+                        Zaterdag: 8:00 tot 16:00<br>
+                        Zondag: fuck zondag<br>
                     </div>
                 </div>
             </div>
