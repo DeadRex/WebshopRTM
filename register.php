@@ -1,80 +1,34 @@
 <?php
-require_once 'core/init.php';
 
-if(Input::exists()){
-    //if(Token::check(Input::get('token'))) {
-    if(true){
-        $validate = new Validation();
-        $validation = $validate->check($_POST, array(
-            'username' => array(
-                'required' => true,
-                'min' => 2,
-                'max' => 20,
-                'unique' => 'users'
-            ),
-            'password' => array(
-                'required' => true,
-                'min' => 6
-            ),
-            'password_again' => array(
-                'required' => true,
-                'matches' => 'password'
-            ),
-            'name' => array(
-                'required' => true,
-                'min' => 3,
-                'max' => 50
-            )
-        ));
+/**
+ * A simple, clean and secure PHP Login Script / MINIMAL VERSION
+ * For more versions (one-file, advanced, framework-like) visit http://www.php-login.net
+ *
+ * Uses PHP SESSIONS, modern password-hashing and salting and gives the basic functions a proper login system needs.
+ *
+ * @author Panique
+ * @link https://github.com/panique/php-login-minimal/
+ * @license http://opensource.org/licenses/MIT MIT License
+ */
 
-        if ($validation->passed()) {
-
-            $user = new User();
-            $salt = Hash::salt(32);
-
-            try{
-                $user->create(array(
-                    'username'  => Input::get('username'),
-                    'password'  => Hash::make(Input::get('password'), $salt),
-                    'salt'      => $salt,
-                    'name'      => Input::get('name'),
-                    'groups'    => 1
-                ));
-            }catch (Exception $e){
-                die($e->getMessage());
-            }
-
-            Session::flash('success', 'You have successfully registered.');
-            Redirect::to('index.php');
-        } else {
-            pre($validation->errors());
-        }
-    }
+// checking for minimum PHP version
+if (version_compare(PHP_VERSION, '5.3.7', '<')) {
+    exit("Sorry, Simple PHP Login does not run on a PHP version smaller than 5.3.7 !");
+} else if (version_compare(PHP_VERSION, '5.5.0', '<')) {
+    // if you are using PHP 5.3 or PHP 5.4 you have to include the password_api_compatibility_library.php
+    // (this library adds the PHP 5.5 password hashing functions to older versions of PHP)
+    require_once("libraries/password_compatibility_library.php");
 }
 
-?>
-<form action="" method="post">
-    <div class="field">
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username" value="<?php echo escape(Input::get('username')); ?>" autocomplete="off"/>
-    </div>
+// include the configs / constants for the database connection
+require_once("config/db.php");
 
-    <div class="field">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" value="" autocomplete="off"/>
-    </div>
+// load the registration class
+require_once("classes/Registration.php");
 
-    <div class="field">
-        <label for="password_again">Retype Password</label>
-        <input type="password" name="password_again" id="password_again" value="" autocomplete="off"/>
-    </div>
+// create the registration object. when this object is created, it will do all registration stuff automatically
+// so this single line handles the entire registration process.
+$registration = new Registration();
 
-    <div class="field">
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name" value="<?php echo escape(Input::get('name')); ?>" autocomplete="off"/>
-    </div>
-
-    <input type="text" name="token" value="<?php echo Token::generate(); ?>"/>
-
-    <input type="submit" value="Register"/>
-</form>
+// show the register view (with the registration form, and messages/errors)
+include("views/register.php");
