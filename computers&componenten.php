@@ -143,10 +143,10 @@
 
                 <div class="col-sm-4 col-lg-4 col-md-4">
                     <div class="thumbnail">
-                        <img src="img/htc-desire-500.jpg" alt="">
+                        <img src="img/Razer%20DeathAdder.jpg" alt="">
                         <div class="caption">
                             <h4 class="pull-right">$64.99</h4>
-                            <h4><a href="#">Second Product</a>
+                            <h4><a href="#">Razer Deat</a>
                             </h4>
                             <p>Product nummer 1</p>
                                 <span class="item-right"><br>
