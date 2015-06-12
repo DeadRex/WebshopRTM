@@ -1,78 +1,79 @@
 <?php
-
+/**
+ * Created by Chris on 9/29/2014 3:57 PM.
+ */
 
 class User {
-
     private $_db,
             $_data,
             $_sessionName,
             $_cookieName,
-            $_loggedIn = false;
+            $isLoggedIn;
 
-    public function __construct($user = null){
+    public function __construct($user = null) {
         $this->_db = DB::getInstance();
-        $this->_sessionName = Config::get('session/session_name');
-        $this->_cookieName  = Config::get('remember/cookie_name');
+        $this->_sessionName = Config::get('sessions/session_name');
+        $this->_cookieName = Config::get('remember/cookie_name');
 
-        if(!$user){
-            if(Session::exists($this->_sessionName)){
-                $user = Session::get($this->_sessionName);  //Get the currently logged-in user id
-                if($this->find($user)){
-                    $this->_loggedIn = true;
-                }else{
-                    //process logout
+        if(!$user) {
+            if(Session::exists($this->_sessionName)) {
+                $user = Session::get($this->_sessionName);
+
+                if($this->find($user)) {
+                    $this->isLoggedIn = true;
+                } else {
+                    //Logout
                 }
             }
-        }else{
+        } else {
             $this->find($user);
         }
     }
 
-    public function create($fields = array()){
-        if(!$this->_db->insert('users', $fields)){
-            throw new Exception('Three was a problem creating an account');
+    public function create($fields = array()) {
+        if(!$this->_db->insert('users', $fields)) {
+            throw new Exception('Sorry, there was a problem creating your account;');
         }
     }
 
-    public function update($fields = array(), $id = null){
-        if(!$id && $this->isLoggedIn()){
+    public function update($fields = array(), $id = null) {
+
+        if(!$id && $this->isLoggedIn()) {
             $id = $this->data()->id;
         }
 
-        if(!$this->_db->update('users', $id, $fields)){
-            throw new Exception('There was a problem updating.');
+        if(!$this->_db->update('users', $id, $fields)) {
+            throw new Exception('There was a problem updating');
         }
     }
 
-    // find and set users data to _data
-    public function find($user = null){
-        if($user){
+    public function find($user = null) {
+        if($user) {
             $field = (is_numeric($user)) ? 'id' : 'username';
             $data = $this->_db->get('users', array($field, '=', $user));
 
-            if($data->count()){
+            if($data->count()) {
                 $this->_data = $data->first();
                 return true;
             }
         }
-
         return false;
     }
 
-    public function login($username = null, $password = null, $remember = false){
-
-        if(!$username && !$password && $this->exists()){
+    public function login($username = null, $password = null, $remember = false) {
+        if(!$username && !$password && $this->exists()) {
             Session::put($this->_sessionName, $this->data()->id);
-            $this->_loggedIn = true;
-        }else {
+        } else {
             $user = $this->find($username);
+
             if ($user) {
-                if ($this->data()->password == Hash::make($password, $this->data()->salt)) {
+                if ($this->data()->password === Hash::make($password, $this->data()->salt)) {
                     Session::put($this->_sessionName, $this->data()->id);
 
                     if ($remember) {
                         $hash = Hash::unique();
                         $hashCheck = $this->_db->get('users_session', array('user_id', '=', $this->data()->id));
+
                         if (!$hashCheck->count()) {
                             $this->_db->insert('users_session', array(
                                 'user_id' => $this->data()->id,
@@ -82,7 +83,6 @@ class User {
                             $hash = $hashCheck->first()->hash;
                         }
 
-                        //set cookie
                         Cookie::put($this->_cookieName, $hash, Config::get('remember/cookie_expiry'));
                     }
 
@@ -90,44 +90,37 @@ class User {
                 }
             }
         }
+        return false;
+    }
+
+    public function hasPermission($key) {
+        $group = $this->_db->get('groups', array('id', '=', $this->data()->group));
+
+        if($group->count()) {
+            $permissions = json_decode($group->first()->permissions, true);
+
+            return !empty($permissions[$key]);
+        }
 
         return false;
     }
 
-    public function data(){
-        return $this->_data;
+    public function exists() {
+        return (!empty($this->_data)) ? true : false;
     }
 
-    public function isLoggedIn(){
-        return $this->_loggedIn;
-    }
-
-    public function logout(){
-
+    public function logout() {
         $this->_db->delete('users_session', array('user_id', '=', $this->data()->id));
 
         Session::delete($this->_sessionName);
         Cookie::delete($this->_cookieName);
     }
 
-    public function exists(){
-        return (!empty($this->_data)) ? true : false;
+    public function data(){
+        return $this->_data;
     }
 
-    public function hasPermission($key){
-        $group = $this->_db->get('groups', array('id', '=', $this->data()->groups));
-        if($group->count()){
-            $permissions = json_decode($group->first()->permissions, true);
-
-            if(isset($permissions[$key])){
-                if($permissions[$key] == 1){
-                    return true;
-                }
-            }
-        }
-
-        return false;
-
+    public function isLoggedIn() {
+        return $this->isLoggedIn;
     }
-
-} 
+}

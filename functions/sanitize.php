@@ -1,11 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Nirmal
- * Date: 2/23/2015
- * Time: 3:49 PM
+ * Created by Chris on 9/29/2014 3:59 PM.
  */
 
-function escape($string){
+require_once 'core/init.php';
+
+function escape($string) {
     return htmlentities($string, ENT_QUOTES, 'UTF-8');
 }
