@@ -1,15 +1,16 @@
 <?php
-
+/**
+ * Created by Chris on 9/29/2014 3:55 PM.
+ */
 
 class Input {
-
-    public static function exists($type = 'post'){
-        switch($type){
+    public static function exists($type = 'post') {
+        switch($type) {
             case 'post':
-                return (!empty($_POST))? true: false;
+                return (!empty($_POST)) ? true : false;
                 break;
             case 'get':
-                return (!empty($_GET))? true: false;
+                return (!empty($_GET)) ? true : false;
                 break;
             default:
                 return false;
@@ -17,15 +18,13 @@ class Input {
         }
     }
 
-    public static function get($item){
-
-        if(isset($_POST[$item])){
+    public static function get($item) {
+        if(isset($_POST[$item])) {
             return $_POST[$item];
-        }elseif(isset($_GET[$item])){
+        } else if(isset($_GET[$item])) {
             return $_GET[$item];
         }
 
         return '';
     }
-
-} 
+}
